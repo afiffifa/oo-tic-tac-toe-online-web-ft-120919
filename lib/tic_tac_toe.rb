@@ -67,7 +67,6 @@ class TicTacToe
     @board.count{|token| token == "X" || token == "O"}
   end
 
-  # #display_board displays an ascii Tic Tac Toe board.
   # Called by #turn
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
@@ -77,12 +76,10 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
-  # #over? checks to see if the game has been won or is a draw. If so, the game is over.
   def over?
     won? || draw?
   end
 
-  # #won? checks to see if a winning combination exists
   def won?
     a = WIN_COMBINATIONS.find{
       |combo|
@@ -95,7 +92,6 @@ class TicTacToe
     return a || b
   end
 
-  # WIN_COMBINATIONS holds 8 possible winning combinations of 3 board positions
   WIN_COMBINATIONS = [
     #Board layout
     # 0 | 1 | 2
@@ -114,12 +110,10 @@ class TicTacToe
     [2,4,6]  # Diagnol 2
   ]
 
-  # #draw? checks to see if the board is full, but there is no winning combination
   def draw?
     !won? && full?
   end
 
-  # #full? checks to see if the board is full, ie no empty spaces remain
   def full?
     !@board.any?{|x| x == "" || x == " "}
   end

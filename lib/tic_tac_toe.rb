@@ -61,13 +61,11 @@ class TicTacToe
     turn_count % 2 == 0 ? "X" : "O"
   end
 
-  # #turn_count keeps track of the number of turns that have been taken
   # Called by #current_player
   def turn_count
     @board.count{|token| token == "X" || token == "O"}
   end
 
-  # Called by #turn
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"

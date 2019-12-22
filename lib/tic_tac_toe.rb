@@ -16,8 +16,6 @@ class TicTacToe
     gets.strip.downcase == "y" || gets.strip.downcase == "yes" ? play : puts("Goodbye!")
   end
 
-  # #turn gets the player's move, checks that the move is valid, then updates the board with the new move and finally displays the board.
-  # Called by #play
   def turn
     puts "Player #{current_player}, please enter a number 1-9:"
     input = gets.strip
@@ -31,37 +29,26 @@ class TicTacToe
     end
   end
 
-  # #input_to_index converts the player's choice of position to the corresponding index in the board array.
-  # Called by #turn
   def input_to_index(input)
     input.to_i - 1
   end
 
-  # #valid_move? checks to see if current player's move choice is both available and a position on the board (has an index between 0-8)
-  # Called by #turn
   def valid_move?(index)
     index.between?(0,8) && !position_taken?(index)
   end
 
-  # #position_taken? checks to see if a position on the board is already occupied by an "X" or "O".
-  # Called by #valid_move
   def position_taken?(index)
     !(@board[index].nil? || @board[index] == " ")
   end
 
-  # #move updates the board array with the current player's valid move choice
-  # Called by #turn
   def move(index, token = "X")
     @board[index] = token
   end
 
-  # #current_player checks which turn it is to determine if it's X or O's turn
-  # Called by #move and by #turn
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
 
-  # Called by #current_player
   def turn_count
     @board.count{|token| token == "X" || token == "O"}
   end

@@ -124,7 +124,6 @@ class TicTacToe
     !@board.any?{|x| x == "" || x == " "}
   end
 
-  # #winner checks to see what kind of token is in the winning combination, if one exists
   def winner
     if won?
       @board[won?[0]] == "X" ? "X" : "O"
